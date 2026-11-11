@@ -23,7 +23,7 @@ class BankMessageParserTest {
     }
 
     @Test
-    fun `balance after the incoming amount is not picked`() {
+    fun `balance before the incoming keyword is not picked`() {
         assertEquals(
             1250.5,
             BankMessageParser.parseIncoming("ยอดเงินคงเหลือ 9,999.00 บาท เงินเข้า 1,250.50 บาท")!!,
@@ -58,6 +58,25 @@ class BankMessageParserTest {
     @Test
     fun `outgoing payment is still ignored`() {
         assertNull(BankMessageParser.parseIncoming("ชำระเงิน 350.00 บาท ร้าน xxx"))
+    }
+
+    @Test
+    fun `payee line ผู้รับชำระ marks an outgoing payment`() {
+        assertNull(BankMessageParser.parseIncoming("ผู้รับชำระ: ร้าน xxx 350.00 บาท"))
+    }
+
+    @Test
+    fun `incoming transfer mentioning the payer is still incoming`() {
+        assertEquals(500.0, BankMessageParser.parseIncoming("รับเงินโอน 500.00 บาท ผู้จ่าย นาย xxx")!!, 0.001)
+    }
+
+    @Test
+    fun `balance between keyword and amount is not picked`() {
+        assertEquals(
+            500.0,
+            BankMessageParser.parseIncoming("เงินเข้า ยอดคงเหลือ 9,999.00 บาท จำนวน 500.00 บาท")!!,
+            0.001
+        )
     }
 
     @Test

@@ -33,13 +33,16 @@ enum class Bank(
 
 object BankMessageParser {
     private val INCOMING = listOf(
-        "เงินเข้า", "รับเงิน", "ได้รับเงิน", "รับโอน", "โอนเงินเข้า", "เงินโอนเข้า", "ฝากเงิน", "รับชำระ",
+        "เงินเข้า", "รับเงิน", "รับโอน", "เงินโอนเข้า", "ฝากเงิน", "รับชำระ",
         "received", "deposit", "credited"
     )
     private val OUTGOING = listOf(
-        "เงินออก", "โอนเงินออก", "โอนเงินให้", "โอนเงินไป", "ผู้รับเงิน", "ชำระ", "จ่าย", "ถอน", "หักบัญชี",
+        "เงินออก", "โอนเงินออก", "โอนเงินให้", "โอนเงินไป", "ผู้รับเงิน", "ผู้รับชำระ", "ชำระ", "จ่าย", "ถอน", "หักบัญชี",
         "paid", "withdraw", "debit"
     )
+
+    /** คำบอกทิศทางทั้งหมด: (คำ, เป็นเงินเข้าไหม) */
+    private val DIRECTION_WORDS = INCOMING.map { it to true } + OUTGOING.map { it to false }
     private val BALANCE_HINTS = listOf("คงเหลือ", "ยอดเงิน", "ยอดใช้ได้", "ค่าธรรมเนียม", "balance", "fee")
 
     private val SUFFIX = Regex("""([0-9][0-9,]*(?:\.[0-9]{1,2})?)\s*(?:บาท|THB|Baht)""", RegexOption.IGNORE_CASE)
@@ -61,14 +64,21 @@ object BankMessageParser {
 
     /** คืนยอดเงินเข้าถ้าข้อความเป็นการรับเงิน ไม่ใช่ให้คืน null */
     fun parseIncoming(text: String): Double? {
-        val t = text.replace('\n', ' ')
-        val lower = t.lowercase(Locale.ROOT)
-        // "รับชำระ" (ร้านรับชำระเงิน) มีคำว่า "ชำระ" อยู่ข้างใน จึงตัดออกก่อนเช็กคำเงินออก
-        val outgoingHay = lower.replace("รับชำระ", "")
-        if (OUTGOING.any { outgoingHay.contains(it) }) return null
-        val keywordIndex = INCOMING.map { lower.indexOf(it) }.filter { it >= 0 }.minOrNull() ?: return null
+        val lower = text.replace('\n', ' ').lowercase(Locale.ROOT)
+        // ทิศทางตัดสินจากคำบอกทิศทางที่ขึ้นก่อนในข้อความ ถ้าเริ่มตำแหน่งเดียวกันให้คำที่ยาวกว่าชนะ
+        // ("ผู้รับชำระ" ชนะ "รับชำระ", "รับชำระ" ชนะ "ชำระ" ที่อยู่ข้างใน)
+        // ponytail: ใช้คำแรกของข้อความ ถ้าธนาคารไหนขึ้นต้นข้อความเงินออกด้วยคำเงินเข้า ให้เปลี่ยนไปดูคำที่ใกล้ยอดเงินแทน
+        val first = DIRECTION_WORDS
+            .mapNotNull { (word, incoming) ->
+                lower.indexOf(word).takeIf { it >= 0 }?.let { Triple(it, word.length, incoming) }
+            }
+            .minWithOrNull(compareBy<Triple<Int, Int, Boolean>> { it.first }.thenByDescending { it.second })
+            ?: return null
+        if (!first.third) return null
+        val keywordIndex = first.first
 
-        val amounts = findAmounts(t).filterNot { hit ->
+        // หาตัวเลขจาก lower เพื่อให้ตำแหน่งตรงกับที่ใช้ตัดดูคำข้างหน้า (regex ไม่สนตัวพิมพ์อยู่แล้ว)
+        val amounts = findAmounts(lower).filterNot { hit ->
             val before = lower.substring(maxOf(0, hit.index - 20), hit.index)
             BALANCE_HINTS.any { before.contains(it) }
         }
