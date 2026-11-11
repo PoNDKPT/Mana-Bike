@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.ManaBike.Splash" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:windowBackground">@color/mana_navy</item>
+        <item name="android:windowSplashScreenBackground">@color/mana_navy</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_splash_logo</item>
+        <item name="android:statusBarColor">@color/mana_navy</item>
+        <item name="android:navigationBarColor">@color/mana_navy</item>
+    </style>
+</resources>

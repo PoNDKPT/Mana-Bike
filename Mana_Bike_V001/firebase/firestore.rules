@@ -1,0 +1,20 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ข้อมูลส่วนตัว: ผู้ใช้อ่าน/เขียนได้เฉพาะของตัวเอง
+    match /users/{uid} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+
+      // ประวัติเงินเข้า: อ่าน/เพิ่ม/แก้ไขได้เฉพาะของตัวเอง ห้ามลบ
+      match /transactions/{docId} {
+        allow read: if request.auth != null && request.auth.uid == uid;
+        allow create, update: if request.auth != null && request.auth.uid == uid
+                              && request.resource.data.amount is number
+                              && request.resource.data.amount > 0
+                              && request.resource.data.timestamp is int;
+        allow delete: if false;
+      }
+    }
+  }
+}

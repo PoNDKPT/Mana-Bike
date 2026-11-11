@@ -1,0 +1,27 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# ความลับ / ค่าเฉพาะเครื่อง (ห้ามขึ้น GitHub)
+app/google-services.json
+*.jks
+*.keystore
+keystore.properties
+*-adminsdk-*.json
+.env
+
+# ไฟล์ที่ build ออกมา
+*.apk
+*.aab

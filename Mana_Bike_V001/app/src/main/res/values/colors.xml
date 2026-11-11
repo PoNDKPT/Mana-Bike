@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="mana_navy">#0A2463</color>
+    <color name="mana_blue">#1A64D8</color>
+    <color name="mana_sky">#DCEBFF</color>
+    <color name="mana_sky_light">#EAF2FF</color>
+    <color name="mana_light_blue">#5BB0FF</color>
+    <color name="mana_background">#F3F8FF</color>
+    <color name="mana_pale">#BFD9FF</color>
+    <color name="mana_muted">#51628A</color>
+    <color name="mana_disabled">#7A89AD</color>
+    <color name="mana_track">#33FFFFFF</color>
+    <color name="mana_nav_indicator">#E6ECF5</color>
+    <!-- วันที่มีรายการในปฏิทินหน้าประวัติ (สีส้มอ่อน) -->
+    <color name="mana_day_data_bg">#FFF0D6</color>
+    <color name="mana_day_data_text">#8A4B00</color>
+    <color name="mana_error">#B3261E</color>
+</resources>

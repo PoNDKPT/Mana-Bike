@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.Mana_Bike_V001" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/mana_blue</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/mana_sky</item>
+        <item name="colorOnPrimaryContainer">@color/mana_navy</item>
+        <item name="colorSecondaryContainer">@color/mana_sky</item>
+        <item name="colorOnSecondaryContainer">@color/mana_navy</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/mana_navy</item>
+        <item name="android:windowBackground">@color/mana_background</item>
+        <item name="android:statusBarColor">@color/mana_navy</item>
+    </style>
+
+    <style name="Theme.Mana_Bike_V001" parent="Base.Theme.Mana_Bike_V001" />
+
+    <!-- ตัวไฮไลต์เมนูล่างตอนเลือก (เทาอมฟ้าอ่อน) แก้สีได้ที่ mana_nav_indicator -->
+    <style name="Widget.ManaBike.ActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/mana_nav_indicator</item>
+    </style>
+
+    <!-- ธีมหน้าโหลด: พื้นน้ำเงินเข้มตั้งแต่เปิดแอป -->
+    <style name="Theme.ManaBike.Splash" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:windowBackground">@color/mana_navy</item>
+        <item name="android:statusBarColor">@color/mana_navy</item>
+        <item name="android:navigationBarColor">@color/mana_navy</item>
+    </style>
+
+    <style name="Widget.ManaBike.MonthButton" parent="Widget.Material3.Button.TonalButton">
+        <item name="android:checkable">true</item>
+        <item name="backgroundTint">@color/month_bg</item>
+        <item name="android:textColor">@color/month_text</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.ManaBike.ArrowButton" parent="Widget.Material3.Button.TonalButton">
+        <item name="backgroundTint">@color/mana_sky_light</item>
+        <item name="android:textColor">@color/mana_navy</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="Widget.ManaBike.PrimaryButton" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/mana_blue</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.ManaBike.Section" parent="">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/mana_muted</item>
+    </style>
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="history_total_fmt">รวม %1$s</string>
+    <string name="close">ปิด</string>
+    <string name="status_on">เปิด</string>
+    <string name="status_off">ปิด</string>
+    <string name="perm_tap_to_allow">ยังไม่อนุญาต • แตะเพื่อตั้งค่า</string>
+    <string name="test_title">สถานะการดักจับ</string>
+    <string name="test_body">ดักจับข้อความ: %1$s\nสิทธิ์อ่านการแจ้งเตือน: %2$s\nสิทธิ์รับ SMS: %3$s\nธนาคารที่เปิดใช้: %4$s\n\nทดสอบอ่านข้อความตัวอย่าง เงินเข้า 350.00 บาท ได้ยอด: %5$s</string>
+    <string name="voice_title">เสียงพูดเมื่อเงินเข้า</string>
+    <string name="voice_desc">ประกาศยอดที่ได้รับเป็นเสียงทุกครั้งที่บันทึกยอดใหม่ (ใช้ระดับเสียงสื่อ)</string>
+    <string name="tts_missing">ไม่พบเสียงภาษาไทยในเครื่อง ติดตั้งได้ที่ ตั้งค่า > ระบบ > ภาษาและการป้อนข้อมูล > ตัวแปลงข้อความเป็นเสียง</string>
+    <string name="history_count_fmt">%1$d รายการ</string>
+    <string name="history_empty_day">ไม่มีรายการในวันที่เลือก</string>
+    <string name="demo_badge">● โหมดข้อมูลตัวอย่าง</string>
+    <string name="today_suffix">• วันนี้</string>
+    <string name="scope_month">ทั้งเดือน</string>
+    <string name="this_month_suffix">• ล่าสุด</string>
+    <string name="history_view_month">ดูทั้งเดือน</string>
+    <string name="history_back_month">กลับไปเดือนล่าสุด</string>
+    <string name="prev_month">เดือนก่อนหน้า</string>
+    <string name="next_month">เดือนถัดไป</string>
+    <string name="btn_ok">ตกลง</string>
+    <string name="btn_cancel">ยกเลิก</string>
+</resources>

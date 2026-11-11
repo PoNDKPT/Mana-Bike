@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="splash_tagline">บันทึกยอดเงินเข้าร้านอัตโนมัติ</string>
+    <string name="splash_loading">กำลังโหลด...</string>
+    <string name="logo_desc">โลโก้ Mana Bike</string>
+    <string name="summary_label">ยอดรวมเงินเข้าเดือนนี้</string>
+    <string name="stat_count">จำนวนรายการ</string>
+    <string name="stat_avg">เฉลี่ยต่อวัน</string>
+    <string name="prev_year">ปีก่อนหน้า</string>
+    <string name="next_year">ปีถัดไป</string>
+    <string name="nav_overview">ภาพรวม</string>
+    <string name="nav_history">ประวัติ</string>
+    <string name="nav_settings">ตั้งค่า</string>
+    <string name="history_title">ประวัติเงินเข้า</string>
+    <string name="history_empty">ยังไม่มีรายการในเดือนนี้</string>
+    <string name="item_income">เงินเข้า</string>
+    <string name="settings_title">ตั้งค่า</string>
+    <string name="capture_title">ดักจับข้อความจากธนาคาร</string>
+    <string name="capture_desc">บันทึกยอดเงินเข้าอัตโนมัติเมื่อมีข้อความแจ้งเตือน</string>
+    <string name="perm_title">สิทธิ์การเข้าถึง</string>
+    <string name="perm_notification">อ่านการแจ้งเตือน</string>
+    <string name="perm_sms">รับข้อความ SMS</string>
+    <string name="perm_allowed">อนุญาตแล้ว</string>
+    <string name="perm_grant">อนุญาต</string>
+    <string name="banks_title">ธนาคารที่ดักจับ</string>
+    <string name="bank_kbank">กสิกรไทย</string>
+    <string name="bank_scb">ไทยพาณิชย์</string>
+    <string name="bank_bbl">กรุงเทพ</string>
+    <string name="bank_ktb">กรุงไทย</string>
+    <string name="bank_gsb">ออมสิน</string>
+    <string name="btn_test">ทดสอบการดักจับ</string>
+    <string name="month_short_1">ม.ค.</string>
+    <string name="month_short_2">ก.พ.</string>
+    <string name="month_short_3">มี.ค.</string>
+    <string name="month_short_4">เม.ย.</string>
+    <string name="month_short_5">พ.ค.</string>
+    <string name="month_short_6">มิ.ย.</string>
+    <string name="month_short_7">ก.ค.</string>
+    <string name="month_short_8">ส.ค.</string>
+    <string name="month_short_9">ก.ย.</string>
+    <string name="month_short_10">ต.ค.</string>
+    <string name="month_short_11">พ.ย.</string>
+    <string name="month_short_12">ธ.ค.</string>
+</resources>
