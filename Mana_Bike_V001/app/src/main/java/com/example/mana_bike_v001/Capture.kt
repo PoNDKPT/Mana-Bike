@@ -33,7 +33,7 @@ enum class Bank(
 
 object BankMessageParser {
     private val INCOMING = listOf(
-        "เงินเข้า", "รับเงิน", "ได้รับเงิน", "รับโอน", "โอนเงินเข้า", "เงินโอนเข้า", "ฝากเงิน",
+        "เงินเข้า", "รับเงิน", "ได้รับเงิน", "รับโอน", "โอนเงินเข้า", "เงินโอนเข้า", "ฝากเงิน", "รับชำระ",
         "received", "deposit", "credited"
     )
     private val OUTGOING = listOf(
@@ -63,7 +63,9 @@ object BankMessageParser {
     fun parseIncoming(text: String): Double? {
         val t = text.replace('\n', ' ')
         val lower = t.lowercase(Locale.ROOT)
-        if (OUTGOING.any { lower.contains(it) }) return null
+        // "รับชำระ" (ร้านรับชำระเงิน) มีคำว่า "ชำระ" อยู่ข้างใน จึงตัดออกก่อนเช็กคำเงินออก
+        val outgoingHay = lower.replace("รับชำระ", "")
+        if (OUTGOING.any { outgoingHay.contains(it) }) return null
         val keywordIndex = INCOMING.map { lower.indexOf(it) }.filter { it >= 0 }.minOrNull() ?: return null
 
         val amounts = findAmounts(t).filterNot { hit ->
